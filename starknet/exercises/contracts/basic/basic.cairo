@@ -37,12 +37,14 @@ func submit_sale{pedersen_ptr : HashBuiltin*, syscall_ptr : felt*, range_check_p
     sales.write(buyer, seller, transaction, sale);
 
     // Get transaction counter
-    let tc = total_customers.read();
+    let (tc) = total_customers.read();
 
     // Increment transaction counter
+    let tc = tc + 1;
     total_customers.write(tc);
 
-    // Functions must always return something    
+    // Functions must always return something
+    return ();
 }
 
 
